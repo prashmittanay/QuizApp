@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mQuestionTextView;
     private Button mNextButton;
+    private Button mTrueButton;
+    private Button mFalseButton;
 
     private Question[] mQuestionBank = new Question[] {
             new Question(R.string.question_australia, true),
@@ -50,6 +52,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
+            }
+        });
+
+        mTrueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkAnswer(true);
+            }
+        });
+
+        mFalseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkAnswer(false);
             }
         });
     }
