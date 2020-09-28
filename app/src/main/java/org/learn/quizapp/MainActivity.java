@@ -1,5 +1,6 @@
 package org.learn.quizapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import beans.Question;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    private static final String KEY_INDEX = "index";
 
     private TextView mQuestionTextView;
     private Button mNextButton;
@@ -36,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate() called!");
         setContentView(R.layout.activity_main);
 
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
+
         mQuestionTextView = findViewById(R.id.question_text_view);
         mNextButton = findViewById(R.id.next_button);
         mTrueButton = findViewById(R.id.true_button);
@@ -43,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
         addListeners();
         updateQuestion();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d(TAG, "inside onSaveInstanceState()!");
+        outState.putInt(KEY_INDEX, mCurrentIndex);
     }
 
     private void addListeners() {
