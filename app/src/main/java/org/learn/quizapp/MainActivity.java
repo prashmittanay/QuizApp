@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         mQuestionTextView = findViewById(R.id.question_text_view);
         mNextButton = findViewById(R.id.next_button);
+        mTrueButton = findViewById(R.id.true_button);
+        mFalseButton = findViewById(R.id.false_button);
 
         addListeners();
         updateQuestion();
