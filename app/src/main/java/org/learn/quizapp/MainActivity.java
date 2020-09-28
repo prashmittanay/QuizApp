@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import beans.Question;
 
@@ -56,5 +57,18 @@ public class MainActivity extends AppCompatActivity {
     private void updateQuestion() {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
+    }
+
+    private void checkAnswer(boolean userPressed) {
+        boolean answer = mQuestionBank[mCurrentIndex].isAnswerTrue();
+
+        int messageResId = 0;
+
+        if (userPressed == answer)
+            messageResId = R.string.correct_toast;
+        else
+            messageResId = R.string.incorrect_toast;
+
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
     }
 }
