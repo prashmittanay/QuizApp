@@ -38,10 +38,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate() called!");
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState != null) {
-            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
-        }
-
         mQuestionTextView = findViewById(R.id.question_text_view);
         mNextButton = findViewById(R.id.next_button);
         mTrueButton = findViewById(R.id.true_button);
@@ -56,6 +52,16 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         Log.d(TAG, "inside onSaveInstanceState()!");
         outState.putInt(KEY_INDEX, mCurrentIndex);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            updateQuestion();
+        }
     }
 
     private void addListeners() {
