@@ -35,4 +35,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:text="@string/next_button" />
+
+    <Button
+        android:id="@+id/button_main_number_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:text="@string/number_play" />
 </FrameLayout>
