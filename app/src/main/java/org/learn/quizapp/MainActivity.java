@@ -3,6 +3,7 @@ package org.learn.quizapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mNextButton;
     private Button mTrueButton;
     private Button mFalseButton;
+    private Button mNumberPlayButton;
 
     private Question[] mQuestionBank = new Question[] {
             new Question(R.string.question_australia, true),
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         mNextButton = findViewById(R.id.next_button);
         mTrueButton = findViewById(R.id.true_button);
         mFalseButton = findViewById(R.id.false_button);
+        mNumberPlayButton = findViewById(R.id.button_main_number_play);
 
         addListeners();
         updateQuestion();
@@ -87,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 checkAnswer(false);
+            }
+        });
+
+        mNumberPlayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NumberPlay.class);
+                startActivity(intent);
             }
         });
     }

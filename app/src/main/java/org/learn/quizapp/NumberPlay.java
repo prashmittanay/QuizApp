@@ -17,7 +17,7 @@ public class NumberPlay extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_number_play);
 
         mIncrementButton = findViewById(R.id.button_main_increment);
         mDecrementButton = findViewById(R.id.button_main_decrement);
